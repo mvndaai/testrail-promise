@@ -1,0 +1,11 @@
+{
+    "author": "Stewart Taylor <stewart@taylore.net> (http://taylore.net",
+    "name": "testrail-promise",
+    "description": "TestRail Node wrapper using promies",
+    "version": "0.0.1",
+    "main": "lib/index.js",
+    "dependencies": {
+        "request-promise": "2.x",
+        "bluebird": "2.x"
+    }
+ }
