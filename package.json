@@ -1,7 +1,6 @@
 {
-    "author": "Stewart Taylor <stewart@taylore.net> (http://taylore.net",
     "name": "testrail-promise",
-    "description": "TestRail Node wrapper using promies",
+    "description": "TestRail Node wrapper using promises",
     "version": "0.0.1",
     "main": "lib/index.js",
     "dependencies": {
