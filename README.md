@@ -1,2 +1,2 @@
 # testrail-promise
-TestRail Node wrapper using promies
+TestRail Node wrapper using promises
