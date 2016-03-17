@@ -1,7 +1,7 @@
 # testrail-promise
 TestRail wrapper using promises
 
-[!["npm badge"](https://nodei.co/npm/testrail-promise.png)](https://github.com/mvndaai/testrail-promise)
+[!["npm badge"](https://nodei.co/npm/testrail-promise.png)](https://www.npmjs.com/package/testrail-promise)
 
 
 Promise implementation of the TestRail API that returns JSON
@@ -30,7 +30,7 @@ tr.getProject({"project_id":6})
     .then(function(project) { ... })
     .catch(function(err) { ... });
 
-//Getting a test case
+//Getting test cases
 tr.getCases({"project_id":"6", "suite_id":"6", "section_id":"173"})
     .then(function(case) { ... })
     .catch(function(err) { ... });    
@@ -78,7 +78,7 @@ describe('TestRail Reporter', function(){
 
 ## Additional Information
 
-All functions that need input take just one object. It uses what is needed for the API URI then sends the object to the API. This means you should be able to any field available in the API documentation.
+All functions that need input take just one object. It uses what is needed for the API URI then sends the object to the API. This means you should be able to use any field available in the API documentation.
 ```
 var object = {
     "section_id":173,
