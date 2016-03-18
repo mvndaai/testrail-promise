@@ -7,6 +7,12 @@
         "request-promise":"2.x",
         "bluebird":"2.x"
     },
+    "devDependencies":{
+        "jasmine":"2.x"
+    },
+    "scripts":{
+        "test":"jasmine"
+    },
     "keywords":[
         "testrail",
         "promise",
