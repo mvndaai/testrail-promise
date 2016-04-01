@@ -69,7 +69,7 @@ describe('TestRail Reporter', function(){
             "plan_name":"<test plan>",
             "section_name":"<section/test case folder>",
             "title":test.suite.description + " " + test.description,
-            "status":(test.results_.failedCount === 0 ? "passed" : "failed")
+            "status_name":(test.results_.failedCount === 0 ? "passed" : "failed")
         };
         return tr.ifNeededCreateThenAddResultForCase(obj);
     };
