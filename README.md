@@ -96,3 +96,8 @@ If for some reason the cert on TestRail is not trusted, this function can be cal
 ```
 tr.allowUntrustedCertificate();
 ```
+
+If you want to get errors on non-200 responses change to simple requests.
+```
+tr.simpleRequests();
+```
