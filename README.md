@@ -56,23 +56,28 @@ It will query using the API to get IDs hence names can be used as long as they a
 It is recommend to use the *description* + *it* name in a test as the title. Here is a way to use it in Protractor.
 ```
 describe('TestRail Reporter', function(){
+    it('Passing', function(){ 
+        expect(true).toBeTruthy(); 
+    });
+    it('Failing', function(){ 
+        expect(false).toBeTruthy(); 
+    });
+    
     var TestRail = require("testrail-promise");
     var tr = new TestRail("<url>", "<user email>", "<password/apikey>");
-    it('Passing', function(){ expect(true).toBeTruthy(); });
-    it('Failing', function(){ expect(false).toBeTruthy(); });
+    
     afterEach(function(done){
-        reportToTestRail(this).finally(function(){ done(); });
-    });
-    var reportToTestRail = function(test){
         var obj = {
             "project_name":"<project name>",
             "plan_name":"<test plan>",
             "section_name":"<section/test case folder>",
-            "title":test.suite.description + " " + test.description,
-            "status_name":(test.results_.failedCount === 0 ? "passed" : "failed")
+            "title":this.suite.description + " " + this.description,
+            "status_name":(this.results_.failedCount === 0 ? "passed" : "failed")
         };
-        return tr.ifNeededCreateThenAddResultForCase(obj);
-    };
+        return tr.ifNeededCreateThenAddResultForCase(obj).finally(function(){
+            done();
+        });
+    });
 });
 ```
 
