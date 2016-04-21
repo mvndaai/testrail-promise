@@ -74,7 +74,7 @@ describe('TestRail Reporter', function(){
             "title":this.suite.description + " " + this.description,
             "status_name":(this.results_.failedCount === 0 ? "passed" : "failed")
         };
-        return tr.ifNeededCreateThenAddResultForCase(obj).finally(function(){
+        tr.ifNeededCreateThenAddResultForCase(obj).finally(function(){
             done();
         });
     });
