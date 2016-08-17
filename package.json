@@ -1,7 +1,7 @@
 {
     "name":"testrail-promise",
-    "description":"TestRail wrapper using promises",
-    "version":"0.1.8",
+    "description":"TestRail API wrapper using promises",
+    "version":"0.1.9",
     "main":"lib/index.js",
     "dependencies":{
         "request-promise":"2.x",
