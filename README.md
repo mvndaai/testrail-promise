@@ -54,11 +54,11 @@ It will query using the API to get IDs hence names can be used as long as they a
 Jasmine considers showing results within a tests a leak, so we have to use a [custom reporter](http://jasmine.github.io/2.1/custom_reporter.html) to get results. Usually, we would send the results in a `specDone` function, but it is not asynchronous therefore I suggest adding an object onto the `jasmine` var. Here is an example of how to report tests in Protractor:
 
 ```
-custom_reporter = {
+resultLeaker = {
   suiteStarted: function(result){ jasmine.results = {suite:result}; },
   specStarted: function(result){ jasmine.results.spec = result; }
 };
-jasmine.getEnv().addReporter(custom_reporter);
+jasmine.getEnv().addReporter(resultLeaker);
 
 describe('TestRail Reporter', function(){
     it('Passing', function(){
