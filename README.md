@@ -51,8 +51,15 @@ tr.ifNeededCreateThenAddResultForCase(obj)
 This will create a test case under the specific section if one does not exist, then update the result to the most recent run of a test plan.
 It will query using the API to get IDs hence names can be used as long as they are **unique**. The only required information is: project (`project_id`/`project_name`), plan(`plan_id`/`plan_name`),section(`section_id`/`section_name`), `title`(can use `case_id` if case already exists) and status(`status_id`/`status_name`).
 
-It is recommend to use the *description* + *it* name in a test as the title. Here is a way to use it in Protractor.
+Jasmine considers showing results within a tests a leak, so we have to use a [custom reporter](http://jasmine.github.io/2.1/custom_reporter.html) to get results. Usually, we would send the results in a `specDone` function, but it is not asynchronous therefore I suggest adding an object onto the `jasmine` var. Here is an example of how to report tests in Protractor:
+
 ```
+custom_reporter = {
+  suiteStarted: function(result){ jasmine.results = {suite:result}; },
+  specStarted: function(result){ jasmine.results.spec = result; }
+};
+jasmine.getEnv().addReporter(custom_reporter);
+
 describe('TestRail Reporter', function(){
     it('Passing', function(){
         expect(true).toBeTruthy();
@@ -69,8 +76,8 @@ describe('TestRail Reporter', function(){
             "project_name":"<project name>",
             "plan_name":"<test plan>",
             "section_name":"<section/test case folder>",
-            "title":this.suite.description + " " + this.description,
-            "status_name":(this.results_.failedCount === 0 ? "passed" : "failed")
+            "title":jasmine.results.spec.fullName,
+            "status_name":(jasmine.results.spec.failedExpectations.length === 0 ? "passed" : "failed")
         };
         tr.ifNeededCreateThenAddResultForCase(obj).finally(function(){
             done();
