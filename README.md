@@ -31,7 +31,7 @@ tr.getProject({"project_id":6})
 //Getting test cases
 tr.getCases({"project_id":"6", "suite_id":"6", "section_id":"173"})
     .then(function(case) { ... })
-    .catch(function(err) { ... });    
+    .catch(function(err) { ... });
 ```
 ## Automation Use Case
 
@@ -110,4 +110,26 @@ tr.allowUntrustedCertificate();
 If you want to get errors on non-200 responses change to simple requests.
 ```
 tr.simpleRequests();
+```
+
+The functions that allow filters (
+[get_cases](http://docs.gurock.com/testrail-api2/reference-cases#get_cases)
+, [get_milestones](http://docs.gurock.com/testrail-api2/reference-milestones#get_milestones)
+, [get_plans](http://docs.gurock.com/testrail-api2/reference-plans#get_plans)
+, [get_projects](http://docs.gurock.com/testrail-api2/reference-projects#get_projects)
+, [get_results](http://docs.gurock.com/testrail-api2/reference-results#get_results)
+, [get_results_for_case](http://docs.gurock.com/testrail-api2/reference-results#get_results_for_case)
+, [get_results_for_run](http://docs.gurock.com/testrail-api2/reference-results#get_results_for_run)
+, [get_runs](http://docs.gurock.com/testrail-api2/reference-runs#get_runs)
+, [get_tests](http://docs.gurock.com/testrail-api2/reference-tests#get_tests)
+)
+can have as part of their parameter object a `filter` object.
+
+```
+tr.getPlans({
+    project_id : 1,
+    filter: {
+        is_completed : 0
+    }
+})
 ```
