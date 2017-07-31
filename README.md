@@ -123,12 +123,12 @@ The functions that allow filters (
 , [get_runs](http://docs.gurock.com/testrail-api2/reference-runs#get_runs)
 , [get_tests](http://docs.gurock.com/testrail-api2/reference-tests#get_tests)
 )
-can have as part of their parameter object a `filter` object.
+can have as part of their parameter object a `filters` object.
 
 ```
 tr.getPlans({
     project_id : 1,
-    filter: {
+    filters: {
         is_completed : 0
     }
 })
